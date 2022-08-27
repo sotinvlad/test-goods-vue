@@ -45,7 +45,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(332px, 332px));
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-around;
         grid-gap: 16px;
     }

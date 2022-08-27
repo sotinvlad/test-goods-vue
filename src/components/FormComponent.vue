@@ -1,7 +1,12 @@
 <template>
     <div class="Form">
         <span class="Label Required"> Наименование товара </span>
-        <div v-bind:class="[fieldClass($data.itemTitle, 0) ? 'Error' : '']">
+        <div
+            v-bind:class="[
+                'InputContainer',
+                fieldClass($data.itemTitle, 0) ? 'Error' : '',
+            ]"
+        >
             <input
                 class="Input"
                 v-model="itemTitle"
@@ -17,7 +22,12 @@
             placeholder="Введите описание товара"
         ></textarea>
         <span class="Label Required"> Ссылка на изображение товара </span>
-        <div v-bind:class="[fieldClass($data.itemTitle, 1) ? 'Error' : '']">
+        <div
+            v-bind:class="[
+                'InputContainer',
+                fieldClass($data.pictureLink, 1) ? 'Error' : '',
+            ]"
+        >
             <input
                 v-bind:class="[
                     'Input',
@@ -30,7 +40,12 @@
             />
         </div>
         <span class="Label Required"> Цена товара </span>
-        <div v-bind:class="[fieldClass($data.itemPrice, 2) ? 'Error' : '']">
+        <div
+            v-bind:class="[
+                'InputContainer',
+                fieldClass($data.itemPrice, 2) ? 'Error' : '',
+            ]"
+        >
             <input
                 v-model="itemPrice"
                 @input="
@@ -132,6 +147,8 @@
             0px 6px 10px rgba(0, 0, 0, 0.02);
         border-radius: 4px;
         padding: 24px;
+        position: sticky;
+        top: 50px;
     }
 
     .Label {
@@ -152,6 +169,9 @@
         background: #ff8484;
         border-radius: 4px;
     }
+    .InputContainer {
+        margin-bottom: 16px;
+    }
 
     .Input {
         width: 284px;
@@ -161,7 +181,6 @@
         border: none;
         outline: none;
         border-radius: 4px;
-        margin-bottom: 16px;
         font-weight: 400;
         font-size: 12px;
         line-height: 15px;
@@ -178,6 +197,7 @@
     }
 
     .Textarea {
+        font-family: 'Source Sans Pro', system-ui, Tahoma, sans-serif;
         width: 284px;
         height: 108px;
         background: #fffefb;
@@ -219,7 +239,7 @@
             line-height: 10px;
             letter-spacing: -0.02em;
             color: #ff8484;
-            bottom: 2px;
+            bottom: -14px;
         }
     }
 
@@ -229,6 +249,7 @@
         background: #7bae73;
         border-radius: 10px;
         border: none;
+        margin-top: 8px;
         font-style: normal;
         font-weight: 600;
         font-size: 12px;
@@ -248,6 +269,11 @@
             background: #eeeeee;
             color: #b4b4b4;
             cursor: auto;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .Form {
+            position: static;
         }
     }
 </style>

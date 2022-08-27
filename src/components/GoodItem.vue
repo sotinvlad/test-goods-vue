@@ -46,7 +46,7 @@
 <script>
     import imagePlaceholder from '@/assets/placeholder.jpg';
     import basicItemPicture from '@/assets/basicItemPicture.png';
-    import deleteBucket from '@/assets/deleteBucket.png';
+    import deleteBucket from '@/assets/deleteBucket.svg';
     import formatPrice from '@/helpers/formatPrice';
     import ItemSkeleton from '@/components/ItemSkeleton';
     export default {
