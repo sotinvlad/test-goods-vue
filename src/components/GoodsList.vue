@@ -1,10 +1,11 @@
 <template>
-    <transition-group name="flip-list" tag="div" class="GoodsList">
+    <transition-group name="list-complete" tag="div" class="GoodsList">
         <GoodItem
             v-for="item in $props.items"
             :key="item.id"
             :item="item"
             :deleteItem="deleteItem"
+            class="list-complete-item"
         />
     </transition-group>
 </template>
@@ -29,17 +30,18 @@
 </script>
 
 <style lang="scss" scoped>
-    .flip-list-enter-active,
-    .flip-list-leave-active {
+    .list-complete-item {
         transition: all 1s;
+        display: inline-block;
+        margin-right: 10px;
     }
-    .flip-list-enter,
-    .flip-list-leave-to {
+    .list-complete-enter,
+    .list-complete-leave-to {
         opacity: 0;
         transform: translateY(30px);
     }
-    .flip-list-move {
-        transition: transform 1s;
+    .list-complete-leave-active {
+        position: absolute;
     }
     .GoodsList {
         width: 100%;

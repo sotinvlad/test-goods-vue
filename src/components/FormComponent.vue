@@ -137,7 +137,9 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '@/assets/styles.scss';
     .Form {
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         width: 332px;
@@ -174,6 +176,7 @@
     }
 
     .Input {
+        box-sizing: border-box;
         width: 284px;
         height: 36px;
         background: #fffefb;
@@ -197,7 +200,8 @@
     }
 
     .Textarea {
-        font-family: 'Source Sans Pro', system-ui, Tahoma, sans-serif;
+        box-sizing: border-box;
+        font-family: $font-stack;
         width: 284px;
         height: 108px;
         background: #fffefb;
