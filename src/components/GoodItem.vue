@@ -38,6 +38,7 @@
                 <img :src="deleteBucket" alt="Кнопка удаления товара" />
             </div>
         </div>
+
         <ItemSkeleton v-show="!imageIsLoaded" />
     </div>
 </template>
@@ -80,7 +81,7 @@
     };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .GoodItem {
         width: 332px;
         height: 423px;

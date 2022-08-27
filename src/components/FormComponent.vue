@@ -32,9 +32,12 @@
         <span class="Label Required"> Цена товара </span>
         <div v-bind:class="[fieldClass($data.itemPrice, 2) ? 'Error' : '']">
             <input
-                :value="formatPrice(itemPrice)"
+                v-model="itemPrice"
                 @input="
-                    (event) => (itemPrice = validatePrice(event.target.value))
+                    (event) =>
+                        (itemPrice = formatPrice(
+                            validatePrice(event.target.value),
+                        ))
                 "
                 v-bind:class="[
                     'Input',
