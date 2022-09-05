@@ -92,10 +92,9 @@
         border-radius: 4px;
         display: none;
         flex-direction: column;
-        justify-content: space-between;
         cursor: pointer;
         transition: 0.25s ease;
-
+        box-sizing: border-box;
         &:hover {
             .DeleteButton {
                 opacity: 1;
@@ -117,6 +116,7 @@
         margin: 16px;
         margin-bottom: 0;
         color: #3f3f3f;
+        overflow: hidden;
     }
 
     .ItemDescription {
@@ -126,7 +126,12 @@
         margin: 16px;
         margin-bottom: 0;
         color: #3f3f3f;
+        max-height: 280px;
+        width: 300px;
+        height: 80px;
+        overflow-wrap: break-word;
         overflow: hidden;
+        margin-bottom: 16px;
     }
 
     .ItemPrice {
@@ -134,6 +139,7 @@
         font-size: 24px;
         line-height: 30px;
         margin: 16px;
+        margin-top: auto;
         margin-bottom: 24px;
         color: #3f3f3f;
     }
