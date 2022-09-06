@@ -24,9 +24,7 @@
             <div class="ItemDescription">
                 {{ item.itemDescription }}
             </div>
-            <div class="ItemPrice">
-                {{ formatPrice(item.itemPrice.toString()) }} руб.
-            </div>
+            <div class="ItemPrice">{{ formattedPrice }} руб.</div>
             <div
                 class="DeleteButton"
                 @click="
@@ -71,6 +69,11 @@
                 basicItemPicture,
                 imagePlaceholder,
             };
+        },
+        computed: {
+            formattedPrice() {
+                return formatPrice(this.item.itemPrice.toString());
+            },
         },
         methods: {
             formatPrice,

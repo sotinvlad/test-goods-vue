@@ -6,7 +6,7 @@
                 :addItem="addItem"
                 :setShowNotification="setShowNotification"
             />
-            <GoodsList :items="items" :deleteItem="deleteItem" />
+            <GoodsList :items="sortedItems" :deleteItem="deleteItem" />
         </div>
         <Notification v-show="showNotification" />
     </div>
@@ -14,9 +14,9 @@
 
 <script>
     import HeaderComponent from '@/components/HeaderComponent';
-    import FormComponent from '@/components/FormComponent.vue';
-    import GoodsList from '@/components/GoodsList.vue';
-    import Notification from '@/components/Notification.vue';
+    import FormComponent from '@/components/FormComponent';
+    import GoodsList from '@/components/GoodsList';
+    import Notification from '@/components/Notification';
     import getItems from '@/helpers/getItems';
     import deleteItemById from '@/helpers/deleteItemById';
     import sortItems from '@/helpers/sortItems';
@@ -35,29 +35,31 @@
                 items: [],
             };
         },
+        computed: {
+            sortedItems() {
+                return sortItems(this.items, this.sortingBy);
+            },
+        },
         methods: {
             setSortingBy(data) {
                 this.sortingBy = data;
-                this.items = sortItems(this.items, data);
+            },
+            deleteItem(id) {
+                this.items = deleteItemById(id, this.items);
+            },
+            addItem(itemData) {
+                this.items = addItemToItems(itemData, this.items);
+            },
+            setShowNotification(value) {
+                this.showNotification = value;
             },
             getItems,
             deleteItemById,
             sortItems,
             addItemToItems,
-            deleteItem(id) {
-                const newArrayOfItems = deleteItemById(id, this.items);
-                this.items = sortItems(newArrayOfItems, this.sortingBy);
-            },
-            addItem(itemData) {
-                const newArrayOfItems = addItemToItems(itemData, this.items);
-                this.items = sortItems(newArrayOfItems, this.sortingBy);
-            },
-            setShowNotification(value) {
-                this.showNotification = value;
-            },
         },
         mounted() {
-            this.items = sortItems(getItems(), this.sortingBy);
+            this.items = getItems();
         },
         updated() {
             if (this.items.length > 0) {

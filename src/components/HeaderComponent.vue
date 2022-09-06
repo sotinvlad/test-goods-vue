@@ -64,8 +64,8 @@
             };
         },
         methods: {
-            setShowSortingList(data) {
-                this.showSortingList = data;
+            setShowSortingList(bool) {
+                this.showSortingList = bool;
             },
         },
     };
